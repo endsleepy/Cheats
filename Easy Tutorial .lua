@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "😊 Tutorial script",
+    Name = "MY GUI ",
     Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
     LoadingTitle = "Example Hub",
     LoadingSubtitle = "by endsleepy",
@@ -17,8 +17,8 @@ local Window = Rayfield:CreateWindow({
     },
  
     Discord = {
-       Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
-       Invite = "discord.gg/solacew", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+       Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+       Invite = "nil", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
        RememberJoins = false -- Set this to false to make them join the discord every time they load it up
     },
  
@@ -26,20 +26,20 @@ local Window = Rayfield:CreateWindow({
     KeySettings = {
        Title = "Tutorial | Key",
        Subtitle = "Key System",
-       Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+       Note = "Check pastebin on the script", -- Use this to tell the user how to get a key
        FileName = "Examplehubkey", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+       SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
        GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
        Key = {"https://pastebin.com/raw/nSyFQgYi"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
     }
  })
 
- local MainTab = Window:CreateTab("HOME ", nil) -- Title, Image
+ local MainTab = Window:CreateTab("HOME ☀️ ", nil) -- Title, Image
  local Section = MainTab:CreateSection("Main")
  Rayfield:Notify({
    Title = "You excuted the script!!",
    Content = "💖",
-   Duration = 5.5,
+   Duration = 10,
    Image = nil,
 })
 
@@ -380,7 +380,48 @@ end)
    end,
 })
 
-local Slider = MainTab:CreateSlider({
+
+local Dropdown = MainTab:CreateDropdown({
+   Name = "Select area",
+   Options = {"Candy Island","Nugget Island","Pineapple Island"},
+   CurrentOption = {nil},
+   MultipleOptions = false,
+   Flag = "Teleport", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Options)
+      print("Script")
+   end,
+})
+
+local AltTab = Window:CreateTab("AltTab 🌸", nil) -- Title, Image
+local Section = AltTab:CreateSection("Islands")
+
+
+-- Random script within the function to see if the bottons show (it doesn't)
+local Button = AltTab:CreateButton({
+   Name = "Candy Island",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/Actyrn/Scripts/main/AzureModded"))()
+   end,
+})
+
+local Button = AltTab:CreateButton({
+   Name = "Nugget Island",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/Actyrn/Scripts/main/AzureModded"))()
+   end,
+})
+
+local Button = AltTab:CreateButton({
+   Name = "Pineapple Island",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/Actyrn/Scripts/main/AzureModded"))()
+   end,
+})
+
+local MiscTab = Window:CreateTab("MiscTab ⚡", nil) -- Title, Image
+local Section = MiscTab:CreateSection("MiscTab")
+
+local Slider = MiscTab:CreateSlider({
    Name = "Walk Speed",
    Range = {0, 300},
    Increment = 1,
@@ -388,6 +429,6 @@ local Slider = MainTab:CreateSlider({
    CurrentValue = 16,
    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
    end,
 })
