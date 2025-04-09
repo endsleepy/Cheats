@@ -17,7 +17,7 @@ local Window = Rayfield:CreateWindow({
     },
  
     Discord = {
-       Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+       Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
        Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
        RememberJoins = true -- Set this to false to make them join the discord every time they load it up
     },
@@ -33,3 +33,19 @@ local Window = Rayfield:CreateWindow({
        Key = {"https://pastebin.com/raw/nSyFQgYi"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
     }
  })
+
+ local MainTab = Window:CreateTab("🛖HOME ", nil) -- Title, Image
+ local Section = Tab:CreateSection("Main")
+ Rayfield:Notify({
+   Title = "You excuted the script",
+   Content = "Calm Gui",
+   Duration = 5.5,
+   Image = nil,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Button Example",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
