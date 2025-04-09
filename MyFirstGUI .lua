@@ -432,3 +432,12 @@ local Slider = MiscTab:CreateSlider({
       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
    end,
 })
+
+local Toggle = MiscTab:CreateToggle({
+    Name = "AUTO FARM | Toggle Example",
+    CurrentValue = false,
+    Flag = ".", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        print("hello")
+    end
+ })
